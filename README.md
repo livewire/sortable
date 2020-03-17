@@ -21,7 +21,7 @@ For simple layouts that only require simple sorting like a todo list, add the `w
 ```html
 <ul wire:sortable="updateTaskOrder">
     @foreach ($tasks as $task)
-        <li wire:key="task-{{ $task->id }}" wire:sortable.item="{{ $task->id }}">
+        <li wire:sortable.item="{{ $task->id }}" wire:key="task-{{ $task->id }}">
             <h4 wire:sortable.handle>{{ $task->title }}</h4>
             <button wire:click="removeTask({{ $task->id }})">Remove</button>
         </li>
