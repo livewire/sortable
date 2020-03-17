@@ -4,12 +4,14 @@ A plugin/wrapper around [Shopify's sortable package](https://github.com/Shopify/
 
 ## Installation
 
+### CDN
+```html
+<script src="https://cdn.jsdelivr.net/gh/livewire/sortable@v0.x.x/dist/livewire-sortable.js"></script>
 ```
-npm install livewire-sortable
 
-or
-
-yarn add livewire-sortable
+### NPM
+```
+npm install livewire-sortable --save-dev
 ```
 
 ## Usage
@@ -63,3 +65,6 @@ For creating a nested layout with draggable groups with draggale items inside ea
     </form>
 </div>
 ```
+
+## Styling
+If you want to add your own styles to elements during various "draggable" states (like adding a shadow to an item while dragging), reference Shopify's Draggable/Sortable plugin's docs directly: https://github.com/Shopify/draggable/blob/58d79dc9fb5b82271c5dfec74a5c9207cfab01f5/src/Draggable/README.md#classes
