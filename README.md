@@ -13,7 +13,12 @@ A plugin/wrapper around [Shopify's sortable package](https://github.com/Shopify/
 ```
 npm install livewire-sortable --save-dev
 ```
-
+Import the package in your bundle:
+```
+import 'livewire-sortable'
+// Or.
+require('livewire-sortable')
+```
 ## Usage
 
 For simple layouts that only require simple sorting like a todo list, add the `wire:sortable`, `wire:sortable.item`, and `wire:sortable.handle` attributes to your markup as follows.
@@ -29,7 +34,7 @@ For simple layouts that only require simple sorting like a todo list, add the `w
 </ul>
 ```
 
-For creating a nested layout with draggable groups with draggale items inside each group, similar to Trello, add the `wire:sortable`, `wire:sortable-group`, `wire:sortable.item`, `wire:sortable.handle`, `wire:sortable-group.item-group`, and `wire:sortable-group.item` attributes to your markup as follows.
+For creating a nested layout with draggable groups with draggable items inside each group, similar to Trello, add the `wire:sortable`, `wire:sortable-group`, `wire:sortable.item`, `wire:sortable.handle`, `wire:sortable-group.item-group`, and `wire:sortable-group.item` attributes to your markup as follows.
 
 ```html
 <div wire:sortable="updateGroupOrder" wire:sortable-group="updateTaskOrder" style="display: flex">
