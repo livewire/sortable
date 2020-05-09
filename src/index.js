@@ -59,7 +59,7 @@ window.livewire.directive('sortable', (el, directive, component) => {
         setTimeout(() => {
             let items = []
 
-            document.querySelectorAll('[wire\\:sortable\\.item]').forEach((el, index) => {
+            el.querySelectorAll('[wire\\:sortable\\.item]').forEach((el, index) => {
                 items.push({ order: index + 1, value: el.getAttribute('wire:sortable.item')})
             })
 
