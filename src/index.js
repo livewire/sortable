@@ -15,6 +15,12 @@ window.livewire.directive('sortable-group', (el, directive, component) => {
 
     let options = { draggable: '[wire\\:sortable-group\\.item]' }
 
+    if(el.hasAttribute('wire:sortable-group.options')) {
+        var otherOptions = el.getAttribute('wire:sortable-group.options');
+        var correctJson = otherOptions.replace(/(['"])?([a-z0-9A-Z_]+)(['"])?:/g, '"$2": ');
+        Object.assign(options, JSON.parse(correctJson));
+    }
+
     if (el.querySelector('[wire\\:sortable-group\\.handle]')) {
         options.handle ='[wire\\:sortable-group\\.handle]'
     }
@@ -48,6 +54,12 @@ window.livewire.directive('sortable', (el, directive, component) => {
     if (directive.modifiers.length > 0) return
 
     let options = { draggable: '[wire\\:sortable\\.item]' }
+
+    if(el.hasAttribute('wire:sortable.options')) {
+        var otherOptions = el.getAttribute('wire:sortable.options');
+        var correctJson = otherOptions.replace(/(['"])?([a-z0-9A-Z_]+)(['"])?:/g, '"$2": ');
+        Object.assign(options, JSON.parse(correctJson));
+    }
 
     if (el.querySelector('[wire\\:sortable\\.handle]')) {
         options.handle ='[wire\\:sortable\\.handle]'
