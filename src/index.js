@@ -21,6 +21,12 @@ window.livewire.directive('sortable-group', (el, directive, component) => {
 
     const sortable = el.livewire_sortable = new Sortable([], options);
 
+    sortable.on('mirror:created', (e) => {
+        let originalWidth = e.data.originalSource.parentElement.clientWidth
+
+        e.data.mirror.style.width = originalWidth + 'px'
+   })
+
     sortable.on('sortable:stop', () => {
         setTimeout(() => {
             let groups = []
@@ -54,6 +60,12 @@ window.livewire.directive('sortable', (el, directive, component) => {
     }
 
     const sortable = new Sortable(el, options);
+
+    sortable.on('mirror:created', (e) => {
+        let originalWidth = e.data.originalSource.parentElement.clientWidth
+
+        e.data.mirror.style.width = originalWidth + 'px'
+   })
 
     sortable.on('sortable:stop', () => {
         setTimeout(() => {
