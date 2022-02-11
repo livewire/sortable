@@ -20,7 +20,9 @@ window.livewire.directive('sortable-group', (el, directive, component) => {
     }
 
     if (el.hasAttribute('wire:sortable-group.constrainDimensions]')) {
-        options.constrainDimensions = true
+        options.mirror = {
+            constrainDimensions: true
+        }
     }
 
     const sortable = el.livewire_sortable = new Sortable([], options);
@@ -58,7 +60,9 @@ window.livewire.directive('sortable', (el, directive, component) => {
     }
 
     if (el.hasAttribute('wire:sortable.constrainDimensions')) {
-        options.constrainDimensions = true
+        options.mirror = {
+            constrainDimensions: true
+        }
     }
 
     const sortable = new Sortable(el, options);
