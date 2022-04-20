@@ -21,6 +21,15 @@ window.livewire.directive('sortable-group', (el, directive, component) => {
 
     const sortable = el.livewire_sortable = new Sortable([], options);
 
+    sortable.on('drag:start', (event) => {
+        const target = event.originalEvent.target;
+
+        if (target.hasAttribute('wire:sortable.ignore') || findNearestParentByAttribute(target)) {
+            event.cancel()
+        }
+
+    });
+
     sortable.on('sortable:stop', () => {
         setTimeout(() => {
             let groups = []
@@ -55,6 +64,15 @@ window.livewire.directive('sortable', (el, directive, component) => {
 
     const sortable = new Sortable(el, options);
 
+    sortable.on('drag:start', (event) => {
+        const target = event.originalEvent.target;
+
+        if (target.hasAttribute('wire:sortable.ignore') || findNearestParentByAttribute(target)) {
+            event.cancel()
+        }
+
+    });
+
     sortable.on('sortable:stop', () => {
         setTimeout(() => {
             let items = []
@@ -67,3 +85,12 @@ window.livewire.directive('sortable', (el, directive, component) => {
         }, 1)
     })
 })
+
+function findNearestParentByAttribute(el) {
+    while ((el = el.parentElement) && !el.hasAttribute('wire:sortable.ignore')) {
+        if (el.hasAttribute('wire:sortable.item')) {
+            return null;
+        }
+    }
+    return el;
+}
