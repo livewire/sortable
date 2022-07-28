@@ -60,7 +60,7 @@ window.livewire.directive('sortable', (el, directive, component) => {
             let items = []
 
             el.querySelectorAll('[wire\\:sortable\\.item]').forEach((el, index) => {
-                items.push({ order: index + 1, value: el.getAttribute('wire:sortable.item')})
+                items.push({ order: index + 1, value: el.getAttribute('wire:sortable.item'), old: el.getAttribute('wire:sortable.old')})
             })
 
             component.call(directive.method, items)
