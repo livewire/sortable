@@ -26,7 +26,7 @@ For simple layouts that only require simple sorting like a todo list, add the `w
 ```html
 <ul wire:sortable="updateTaskOrder">
     @foreach ($tasks as $task)
-        <li wire:sortable.item="{{ $task->id }}" wire:key="task-{{ $task->id }}">
+        <li wire:sortable.item="{{ $task->id }}" wire:sortable.old="{{ $task->sorting }}" wire:key="task-{{ $task->id }}">
             <h4 wire:sortable.handle>{{ $task->title }}</h4>
             <button wire:click="removeTask({{ $task->id }})">Remove</button>
         </li>
@@ -39,16 +39,16 @@ For creating a nested layout with draggable groups with draggable items inside e
 ```html
 <div wire:sortable="updateGroupOrder" wire:sortable-group="updateTaskOrder" style="display: flex">
     @foreach ($groups as $group)
-        <div wire:key="group-{{ $group->id }}" wire:sortable.item="{{ $group->id }}">
+        <div wire:key="group-{{ $group->id }}" wire:sortable.item="{{ $group->id }}" wire:sortable.old="{{ $group->sorting }}">
             <div style="display: flex">
                 <h4 wire:sortable.handle>{{ $group->label }}</h4>
 
                 <button wire:click="removeGroup({{ $group->id }})">Remove</button>
             </div>
 
-            <ul wire:sortable-group.item-group="{{ $group->id }}">
+            <ul wire:sortable-group.item-group="{{ $group->id }}" wire:sortable-group.old-group="{{ $group->sorting }}">
                 @foreach ($group->tasks()->orderBy('order')->get() as $task)
-                    <li wire:key="task-{{ $task->id }}" wire:sortable-group.item="{{ $task->id }}">
+                    <li wire:key="task-{{ $task->id }}" wire:sortable-group.item="{{ $task->id }}" wire:sortable-group.old="{{ $task->sorting }}">
                         {{ $task->title }}
                         <button wire:click="removeTask({{ $task->id }})">Remove</button>
                     </li>
