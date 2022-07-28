@@ -34,6 +34,18 @@ For simple layouts that only require simple sorting like a todo list, add the `w
 </ul>
 ```
 
+Adding `wire:sortable.old` field with old sorting, permit to compare and update only the changed data in backend
+```php
+public function updateTaskOrder($list)
+{
+    foreach ($list as $item) {
+        if($item['order'] != $item['old']) {
+            Task::find($item['value'])->update(['sorting' => $item['order']]);
+        }
+    }
+}
+```
+
 For creating a nested layout with draggable groups with draggable items inside each group, similar to Trello, add the `wire:sortable`, `wire:sortable-group`, `wire:sortable.item`, `wire:sortable.handle`, `wire:sortable-group.item-group`, and `wire:sortable-group.item` attributes to your markup as follows.
 
 ```html
@@ -70,6 +82,8 @@ For creating a nested layout with draggable groups with draggable items inside e
     </form>
 </div>
 ```
+
+Similar as above, `wire:sortable-group.old-group` and `wire:sortable-group.old` fields are useful to compare with old data
 
 ## Styling
 If you want to add your own styles to elements during various "draggable" states (like adding a shadow to an item while dragging), reference Shopify's Draggable/Sortable plugin's docs directly: https://github.com/Shopify/draggable/blob/58d79dc9fb5b82271c5dfec74a5c9207cfab01f5/src/Draggable/README.md#classes
