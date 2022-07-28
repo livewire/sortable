@@ -28,12 +28,13 @@ window.livewire.directive('sortable-group', (el, directive, component) => {
             el.querySelectorAll('[wire\\:sortable-group\\.item-group]').forEach((el, index) => {
                 let items = []
                 el.querySelectorAll('[wire\\:sortable-group\\.item]').forEach((el, index) => {
-                    items.push({ order: index + 1, value: el.getAttribute('wire:sortable-group.item')})
+                    items.push({ order: index + 1, value: el.getAttribute('wire:sortable-group.item'), old: el.getAttribute('wire:sortable-group.old')})
                 })
 
                 groups.push({
                     order: index + 1,
                     value: el.getAttribute('wire:sortable-group.item-group'),
+                    old: el.getAttribute('wire:sortable-group.old-group'),
                     items: items,
                 })
             })
