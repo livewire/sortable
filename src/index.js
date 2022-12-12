@@ -38,10 +38,10 @@ window.livewire.directive('sortable-group', (el, directive, component) => {
                 let items = []
                 el.querySelectorAll('[wire\\:sortable-group\\.item]').forEach((el, index) => {
                     items.push({
-            order: index + 1,
-            value: el.getAttribute('wire:sortable-group.item'),
-            item: sourceItem == e.getAttribute("wire:sortable-group.item") ? true : false,
-            })
+                    order: index + 1,
+                    value: el.getAttribute('wire:sortable-group.item'),
+                    item: sourceItem == e.getAttribute("wire:sortable-group.item") ? true : false,
+                    })
                 })
 
                 let isSource = sourceGroup == e.getAttribute("wire:sortable-group.item-group") ? true : false
