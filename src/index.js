@@ -38,7 +38,7 @@ window.Livewire.directive('sortable-group', ({el, directive, component}) => {
                 })
             })
 
-            component.call(directive.method, groups)
+            component.$wire.call(directive.method, groups)
         }, 1)
     })
 })
@@ -63,7 +63,7 @@ window.Livewire.directive('sortable', ({el, directive, component}) => {
                 items.push({ order: index + 1, value: el.getAttribute('wire:sortable.item')})
             })
 
-            component.call(directive.method, items)
+            component.$wire.call(directive.method, items)
         }, 1)
     })
 })

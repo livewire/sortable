@@ -1,7 +1,7 @@
 {
   "main": "dist/livewire-sortable.js",
   "name": "livewire-sortable",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "repository": {
     "type": "git",
     "url": "git://github.com/livewire/sortable.git"
