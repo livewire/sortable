@@ -1,10 +1,10 @@
 import Sortable from '@shopify/draggable/lib/sortable'
 
-if (typeof window.livewire === 'undefined') {
-    throw 'Livewire Sortable Plugin: window.livewire is undefined. Make sure @livewireScripts is placed above this script include'
+if (typeof window.Livewire === 'undefined') {
+    throw 'Livewire Sortable Plugin: window.Livewire is undefined. Make sure @livewireScripts is placed above this script include'
 }
 
-window.livewire.directive('sortable-group', (el, directive, component) => {
+window.Livewire.directive('sortable-group', ({el, directive, component}) => {
     if (directive.modifiers.includes('item-group')) {
         // This will take care of new items added from Livewire during runtime.
         el.closest('[wire\\:sortable-group]').livewire_sortable.addContainer(el)
@@ -38,12 +38,12 @@ window.livewire.directive('sortable-group', (el, directive, component) => {
                 })
             })
 
-            component.call(directive.method, groups)
+            component.$wire.call(directive.method, groups)
         }, 1)
     })
 })
 
-window.livewire.directive('sortable', (el, directive, component) => {
+window.Livewire.directive('sortable', ({el, directive, component}) => {
     // Only fire this handler on the "root" directive.
     if (directive.modifiers.length > 0) return
 
@@ -63,7 +63,7 @@ window.livewire.directive('sortable', (el, directive, component) => {
                 items.push({ order: index + 1, value: el.getAttribute('wire:sortable.item')})
             })
 
-            component.call(directive.method, items)
+            component.$wire.call(directive.method, items)
         }, 1)
     })
 })
