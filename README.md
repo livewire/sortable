@@ -6,8 +6,10 @@ A plugin/wrapper around [Shopify's sortable package](https://github.com/Shopify/
 
 ### CDN
 ```html
-<script src="https://cdn.jsdelivr.net/gh/livewire/sortable@v0.x.x/dist/livewire-sortable.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/livewire/sortable@v1.x.x/dist/livewire-sortable.js"></script>
 ```
+
+> Note: this package only supports Livewire v3. If you are using v2, use version `0.3.0` of this package.
 
 ### NPM
 ```
