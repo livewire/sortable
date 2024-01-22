@@ -36,7 +36,7 @@ For simple layouts that only require simple sorting like a todo list, add the `w
 </ul>
 ```
 
-For creating a nested layout with draggable groups with draggable items inside each group, similar to Trello, add the `wire:sortable`, `wire:sortable-group`, `wire:sortable.item`, `wire:sortable.handle`, `wire:sortable-group.item-group`, and `wire:sortable-group.item` attributes to your markup as follows.
+For creating a nested layout with draggable groups with draggable items inside each group, similar to Trello, add the `wire:sortable`, `wire:sortable-group`, `wire:sortable.item`, `wire:sortable.handle`, `wire:sortable-group.handle`, `wire:sortable-group.item-group`, and `wire:sortable-group.item` attributes to your markup as follows.
 
 ```html
 <div wire:sortable="updateGroupOrder" wire:sortable-group="updateTaskOrder" style="display: flex">
@@ -51,7 +51,7 @@ For creating a nested layout with draggable groups with draggable items inside e
             <ul wire:sortable-group.item-group="{{ $group->id }}">
                 @foreach ($group->tasks()->orderBy('order')->get() as $task)
                     <li wire:key="task-{{ $task->id }}" wire:sortable-group.item="{{ $task->id }}">
-                        {{ $task->title }}
+                        <span wire:sortable-group.handle>{{ $task->title }}</span>
                         <button wire:click="removeTask({{ $task->id }})">Remove</button>
                     </li>
                 @endforeach
