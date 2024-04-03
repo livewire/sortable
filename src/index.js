@@ -1,10 +1,6 @@
 import Sortable from '@shopify/draggable/lib/sortable'
 
-if (typeof window.Livewire === 'undefined') {
-    throw 'Livewire Sortable Plugin: window.Livewire is undefined. Make sure @livewireScripts is placed above this script include'
-}
-
-window.Livewire.directive('sortable-group', ({el, directive, component}) => {
+window.Livewire?.directive('sortable-group', ({el, directive, component}) => {
     if (directive.modifiers.includes('item-group')) {
         // This will take care of new items added from Livewire during runtime.
         el.closest('[wire\\:sortable-group]').livewire_sortable.addContainer(el)
@@ -52,7 +48,7 @@ window.Livewire.directive('sortable-group', ({el, directive, component}) => {
     })
 })
 
-window.Livewire.directive('sortable', ({el, directive, component}) => {
+window.Livewire?.directive('sortable', ({el, directive, component}) => {
     // Only fire this handler on the "root" directive.
     if (directive.modifiers.length > 0) return
 
