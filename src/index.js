@@ -9,7 +9,10 @@ window.Livewire?.directive('sortable-group', ({el, directive, component}) => {
     // Only fire the rest of this handler on the "root" directive.
     if (directive.modifiers.length > 0) return
 
-    let options = { draggable: '[wire\\:sortable-group\\.item]' }
+    let options = {
+        draggable: '[wire\\:sortable-group\\.item]',
+        distance: 10,
+    }
 
     if (el.querySelector('[wire\\:sortable-group\\.handle]')) {
         options.handle ='[wire\\:sortable-group\\.handle]'
